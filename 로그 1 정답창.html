@@ -1,0 +1,36 @@
+<!doctype html><meta charset=utf-8><title>정답 입력</title>
+<style>
+ body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:0;padding:24px;background:#f7f8fa}
+ .w{max-width:720px;margin:0 auto;background:#fff;border-radius:14px;box-shadow:0 6px 20px rgba(0,0,0,.06);padding:22px}
+ h1{margin:0 0 10px;font-size:20px} .h{color:#555;margin:0 0 12px}
+ .row{display:flex;gap:8px} input{flex:1;padding:11px 12px;font-size:18px;border:1px solid #cfd4dc;border-radius:10px;text-transform:lowercase;letter-spacing:2px}
+ button{padding:11px 14px;font-size:16px;border:0;border-radius:10px;background:#111;color:#fff;cursor:pointer}
+ .m{margin-top:10px;font-weight:600} .err{color:#c00}
+ .v{display:none;margin-top:14px;border:1px solid #e6e8eb;border-radius:12px;padding:14px;background:#fbfdfb}
+ .v.show{display:block;animation:up .45s ease-out both}
+ .v p{margin:0 0 8px}
+ @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<div class=w>
+ <h1>4자리 알파벳을 입력하세요</h1>
+ <p class=h>정확히 입력하면 문구가 아래에서 위로 나타납니다.</p>
+ <div class=row>
+  <input id=i maxlength=4 placeholder="예: abcd" autocomplete=off autofocus>
+  <button onclick="c()">확인</button>
+ </div>
+ <div id=m class=m></div>
+ <div id=v class=v>
+  <p>1&nbsp;&nbsp;&nbsp;태초에 말씀이 계시니라 이 말씀이 하나님과 함께 계셨으니 이 말씀은 곧 하나님이시니라</p>
+  <p>2&nbsp;&nbsp;&nbsp;그가 태초에 하나님과 함께 계셨고</p>
+  <p>3&nbsp;&nbsp;&nbsp;만물이 그로 말미암아 지은바 되었으니 지은 것이 하나도 그가 없이는 된 것이 없느니라</p>
+ </div>
+</div>
+<script>
+ function c(){
+  var t=(i.value||'').trim().toLowerCase();
+  var ok=t==='rdag';
+  m.className='m'+(ok?'':' err');
+  m.textContent= ok ? '정답입니다!' : '다시 시도하세요.';
+  v.className='v'+(ok?' show':'');
+ }
+</script>
